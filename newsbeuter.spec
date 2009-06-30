@@ -16,6 +16,7 @@ BuildRequires:	sqlite3-devel
 BuildRequires:	curl-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libxml2-devel
+BuildRequires:	ncursesw-devel
 
 %description
 Newsbeuter is an open-source RSS/Atom feed reader for text
