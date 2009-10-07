@@ -1,6 +1,6 @@
 %define name	newsbeuter
 %define version 2.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	RSS/Atom feed reader for text terminals
 Name:		%{name}
