@@ -1,5 +1,5 @@
 %define name	newsbeuter
-%define version 2.4
+%define version 2.5
 %define release %mkrel 1
 
 Summary:	RSS/Atom feed reader for text terminals
@@ -17,6 +17,7 @@ BuildRequires:	curl-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	ncursesw-devel
+BuildRequires:  libjson-devel
 
 %description
 Newsbeuter is an open-source RSS/Atom feed reader for text
@@ -46,7 +47,7 @@ A summary of some of its features:
 %setup -q
 
 %build
-%make
+CXXFLAGS=-fpermissive %make
 
 %install
 %__rm -rf %{buildroot}
