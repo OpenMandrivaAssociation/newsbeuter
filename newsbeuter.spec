@@ -1,23 +1,19 @@
-%define name	newsbeuter
-%define version 2.5
-%define release %mkrel 1
-
 Summary:	RSS/Atom feed reader for text terminals
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	%{name}-%{version}.tar.gz
+Name:		newsbeuter
+Version:	2.5
+Release:	2
 License:	MIT
 Group:		Networking/News
 Url:		http://www.newsbeuter.org
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	stfl-devel
-BuildRequires:	sqlite3-devel
-BuildRequires:	curl-devel
+Source0:	%{name}-%{version}.tar.gz
+Patch0:		newsbeuter-2.5-gcc4.7.patch
 BuildRequires:	gettext-devel
-BuildRequires:	libxml2-devel
-BuildRequires:	ncursesw-devel
-BuildRequires:  libjson-devel
+BuildRequires:	stfl-devel
+BuildRequires:	pkgconfig(json)
+BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(ncursesw)
+BuildRequires:	pkgconfig(sqlite3)
 
 %description
 Newsbeuter is an open-source RSS/Atom feed reader for text
@@ -45,21 +41,18 @@ A summary of some of its features:
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-CXXFLAGS=-fpermissive %make
+CXXFLAGS=-fpermissive %make prefix=%{_prefix}
 
 %install
-%__rm -rf %{buildroot}
-make DESTDIR=%{buildroot} prefix=/usr install
+%makeinstall_std prefix=%{_prefix}
 
-%clean
-%__rm -rf %{buildroot}
+%find_lang %{name}
 
-%files
-%defattr(-,root,root)
+%files -f %{name}.lang
 %doc AUTHORS CHANGES LICENSE README TODO doc/xhtml/*.html
-%_bindir/*
-%_datadir/locale/*
-%_mandir/man1/*
+%{_bindir}/*
+%{_mandir}/man1/*
 
