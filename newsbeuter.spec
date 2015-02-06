@@ -1,7 +1,7 @@
 Summary:	RSS/Atom feed reader for text terminals
 Name:		newsbeuter
 Version:	2.5
-Release:	2
+Release:	3
 License:	MIT
 Group:		Networking/News
 Url:		http://www.newsbeuter.org
