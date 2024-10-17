@@ -4,7 +4,7 @@ Version:	2.5
 Release:	3
 License:	MIT
 Group:		Networking/News
-Url:		http://www.newsbeuter.org
+Url:		https://www.newsbeuter.org
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		newsbeuter-2.5-gcc4.7.patch
 BuildRequires:	gettext-devel
